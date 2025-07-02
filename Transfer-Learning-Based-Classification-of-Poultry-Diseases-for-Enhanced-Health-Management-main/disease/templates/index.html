@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PoultryDetect | Poultry Health Hub</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">Poultry<span>Detect</span></div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#prediction">Prediction</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="hero-text">
+            <h1>Welcome to Poultry Health Hub</h1>
+            <p>Your comprehensive resource for poultry disease management and prevention.</p>
+            <a href="#prediction" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <section id="about" class="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>We aim to support poultry farmers and veterinarians with advanced AI-powered disease detection tools to manage and prevent infections effectively.</p>
+            <div class="features">
+                <div class="feature-box">
+                    <img src="../static/images/img1.jpeg" alt="Coccidiosis">
+                    <h3>Coccidiosis</h3>
+                </div>
+                <div class="feature-box">
+                    <img src="../static/images/img2.jpeg" alt="Sick Chicken">
+                    <h3>Symptom Detection</h3>
+                </div>
+                <div class="feature-box">
+                    <img src="../static/images/img3.jpeg" alt="Poultry Health">
+                    <h3>Healthy Living</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="prediction" class="prediction">
+        <div class="container">
+            <h2>Prediction</h2>
+            <p>Image Classification for Poultry Disease</p>
+            <form action="/predict" method="POST" enctype="multipart/form-data">
+                <label>Upload Your Image:</label>
+                <input type="file" name="image" required>
+                <button type="submit" class="btn">Predict</button>
+            </form>
+            {% if prediction %}
+                <p class="result">Hence, the infection type detected is <strong>{{ prediction }}</strong>.</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <p>If you have any questions or feedback, feel free to reach out.</p>
+            <form action="https://formspree.io/f/your-form-id" method="POST">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="_replyto" placeholder="Your Email" required>
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit" class="btn">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="current-year"></span> PoultryDetect. All rights reserved.</p>
+        <div class="socials">
+            <a href="#"><i class="fab fa-x-twitter"></i></a>
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='assets/script.js') }}"></script>
+</body>
+</html>
